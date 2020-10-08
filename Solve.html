@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Coder Foundry MiniSite Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="/Index.html">FizzBuzz Javascript Challenge</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Solve.html">Solve</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Code.html">Code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Git</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://jessicas-portfolio.netlify.app/">Portfolio</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container" >
+        <div class="card my-5" style="background-color: #26c5d5;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1>FizzBuzz!</h1>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col">
+                        <input id="txtFizzBuzzIn1" />
+                    </div>
+                    <div class="col">
+                        <input id="txtFizzBuzzIn2" />
+                    </div>
+                    <div class="col">
+                        <button id="btnFizzBuzz" class="btn btn-primary">Fizz? Buzz? FizzBuzz???</button>
+                    </div>
+
+                </div>
+                <div class="row" id="pFizzBuzzOut">
+                </div>
+
+            </div>
+        </div>
+       
+
+    </div>
+
+    <style>
+        body {
+            background-image: url('FIZZ.png');
+            background-attachment: fixed;
+        }
+
+      
+    </style>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="//code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+
+    <!--My Custom JS and Script Tags-->
+    <script>
+
+
+
+        document.getElementById("btnFizzBuzz").addEventListener("click", function () {
+            //Step 1: Get the user data if there is any
+            let fizz = Number(document.getElementById("txtFizzBuzzIn1").value); /*3*/
+            let buzz = Number(document.getElementById("txtFizzBuzzIn2").value); /*5*/
+
+
+            //Step 2: Run the user data through the named function
+            let output = DoFizzBuzzFoundation(fizz, buzz);
+
+            //Step 3: Output the results of the FizzBuzz named function
+            document.getElementById("pFizzBuzzOut").innerHTML = output;
+
+        });
+
+
+        //Named Function
+        function DoFizzBuzzFoundation(fizz, buzz) {
+            let output = "";
+            for (let loop = 1; loop <= 100; loop++) {
+                let fizzRemainder = loop % fizz;
+                let buzzRemainder = loop % buzz;
+                //Some calculation that lookd at fizz and  buzz to see if they are 0
+                //if fizzRemainder == 0 I don't print the loop, instead I print fizz
+                //if buzzRemsinder == 0 I don't print the loop, I brint buzz
+                //if both fizzreminder and buzzremainder == 0, I print fizzbuzz
+
+                if (fizzRemainder == 0 && buzzRemainder == 0) {
+                    output += `<div style="color:blue; font-weight: bold;" class="col-3">FizzBuzz</div>`;
+
+                }
+                else if (fizzRemainder == 0) {
+                    output += `<div style="color:red; font-weight: bold" class="col-3">Fizz</div>`;
+                }
+                else if (buzzRemainder == 0) {
+                    output += `<div style="color: orange; font-weight: bold" class="col-3">Buzz</div >`;
+                }
+                else {
+                    output += `<div class="col-3">${loop}</div>`;
+                }
+
+            }
+            return output;
+        }
+
+
+
+
+                    //output += `loop value: ${loop} <br /> FR: ${loop} % ${fizz} = ${fizzRemainder} <br /> BR: ${loop} % ${buzz} = ${buzzRemainder};
+
+//            };
+
+//            return output;
+//        }
+
+//1 % 3 == 1
+//2 % 3 == 2
+//3 % 3 == 0
+//4 % 3 == 1
+////5 % 3 == 2
+//6 % 3 == 0
+    </script>
+
+
+
+
+</body>
+
+</html>
